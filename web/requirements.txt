@@ -1,7 +1,8 @@
+setuptools>=41.0.0
 Flask
 flask_restful
 pymongo
 bcrypt
 numpy
-tensorflow
+tensorflow==1.15.0
 requests

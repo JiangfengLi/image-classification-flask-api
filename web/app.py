@@ -82,7 +82,7 @@ class Classify(Resource):
 
         retJson, error = verifyCredentials(username, password)
         if error:
-            return jsonify(retJson)
+            return retJson
 
         #Verify user has enough tokens
         num_tokens = countTokens(username)
@@ -107,7 +107,7 @@ class Classify(Resource):
             }
         })
 
-        return retJson
+        return jsonify(retJson)
 
 
 class Refill(Resource):
@@ -116,7 +116,7 @@ class Refill(Resource):
 
         username = postedData["username"]
         password = postedData["admin_pw"]
-        refill_amount = postedData["refill"]
+        refill_amount = postedData["amount"]
 
         if not UserExist(username):
             return returnState(301,"Invalid Username/Password")
