@@ -99,15 +99,17 @@ class Classify(Resource):
             with open("text.txt") as f:
                 retJson = json.load(f)
 
-        users.update({
-            "Username": username
-        }, {
-            "$set": {
-                "Tokens": num_tokens-1
-            }
-        })
+                users.update({
+                    "Username": username
+                }, {
+                    "$set": {
+                        "Tokens": num_tokens-1
+                    }
+                })
 
-        return jsonify(retJson)
+                return jsonify(retJson)
+        
+        return returnState(404, "Recognition failed!")
 
 
 class Refill(Resource):
